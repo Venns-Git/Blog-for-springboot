@@ -1,12 +1,27 @@
+body{
+    background: url("../img/bg.png");
+}
+/* 布局 */
+/* padding */
+.m-padded-mini{
+    padding: 0.3em !important;
+}
+m-padded-tiny{
+    padding: 0.4em !important;
+}
 .m-padded-tb-mini{
     padding-top: 0.2em !important;
     padding-bottom: 0.2em !important;
+}
+.m-padded-tb-tiny{
+    padding-top: 0.3em !important;
+    padding-bottom: 0.3em !important;
 }
 .m-padded-tb-small{
     padding-top: 0.5em !important;
     padding-bottom: 0.5em !important;
 }
-.m-padded-tb-tb{
+.m-padded-tb {
     padding-top: 1em !important;
     padding-bottom: 1em !important;
 }
@@ -26,8 +41,42 @@
     padding-top: 5em !important;
     padding-bottom: 5em !important;
 }
+.m-padded-lr{
+    padding-left:4em !important;
+}
+.m-padded-lr-responsive{
+    padding-left:4em !important;
+}
+/* margin */
+.m-margin-top-small{
+    margin-top: 0.5em !important;
+}
+.m-margin-top{
+    margin-top: 1em !important;
+}
+.m-margin-top-large{
+    margin-top: 2em !important;
+}
+.m-margin-tb-tiny{
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+}
+.m-margin-bottom-mini{
+    margin-bottom: 0.5em !important;
+}
+/* position */
+.m-right-top{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 /* 文本 */
+.m-text{
+    font-weight: 300 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8;
+}
 .m-text-thin {
     font-weight: 300 !important;
 }
@@ -39,4 +88,49 @@
 }
 .m-opacity-mini{
     opacity: 0.8;
+}
+/* 阴影 */
+.m-shadow-small{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 2) !important;
+}
+
+/* dispaly */
+.m-inline-block{
+    display: inline-block !important;
+}
+.m-container{
+    max-width: 72em !important;
+    margin: auto !important;
+}
+.m-container-small{
+    max-width: 60em !important;
+    margin: auto !important;
+}
+
+/* 颜色 */
+.m-black{
+    color: #333 !important;
+}
+
+.m-mobile-show{
+    display: none !important;
+}
+@media screen and (max-width: 768px){
+    .m-mobile-hide{
+        display: none !important;
+    }
+    .m-mobile-show{
+        display: block !important;
+    }
+    .m-padded-lr-responsive{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .m-mobile-lr-clear{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .m-mobile-wide{
+        width: 100% !important;
+    }
 }
