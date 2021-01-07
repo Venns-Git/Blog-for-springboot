@@ -1,18 +1,27 @@
 package com.venns.mapper;
 
-import com.venns.entity.Comment;
+import com.venns.po.Comment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
-@Mapper
-public interface CommentMapper {
-    public void saveComment(Comment comment);
-    public Comment getCommentByIdAndBlogId(@Param("id")Long id,@Param("blogId") Long blogId);
 
-    public List<Comment> getCommentByParentCommentIdAndBlogId(@Param("parentCommentId")Long parentCommentId,@Param("blogId")Long blogId);
-    public List<Comment> getCommentByTopCommentAndBlogId(@Param("topCommentId")Long topCommentId,@Param("blogId")Long blogId);
+@Mapper
+@Repository
+public interface CommentMapper {
+
+    List<Comment> listComments(@Param("blogId") Long blogId);
+
+
+    List<Comment> listAllComments();
+
+    List<Comment> listAdminComments();
+
+    int saveComments(Comment comment);
+
+    Comment getCommentByParentId(@Param("parentId") Long parentId);
+
+    int deleteComments(@Param("id") Long id);
 }

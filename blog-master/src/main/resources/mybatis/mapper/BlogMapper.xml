@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kuls.mapper.BlogMapper">
+<mapper namespace="com.venns.mapper.BlogMapper">
 
     <!--根据id获取文章-->
     <select id="getBlogByID" parameterType="long" resultMap="BlogMap">

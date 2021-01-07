@@ -1,12 +1,14 @@
 package com.venns.mapper;
 
-import com.venns.entity.User;
+import com.venns.po.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
-@Component
+
 @Mapper
+@Repository
 public interface UserMapper {
-    public User login(@Param("username") String username,@Param("password") String password);
+
+    User userCheck(@PathVariable String username, @PathVariable String password);
 }

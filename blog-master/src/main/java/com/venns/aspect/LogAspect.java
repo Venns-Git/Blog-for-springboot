@@ -14,13 +14,14 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class LogAspect {
-
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Pointcut("execution(* com.venns.controller.*.*(..))")
-    public void log() {}
+    public void log() {
 
+    }
 
+    // 添加日志切面
     @Before("log()")
     public void doBefore(JoinPoint joinPoint) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -30,18 +31,20 @@ public class LogAspect {
         String classMethod = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
         RequestLog requestLog = new RequestLog(url, ip, classMethod, args);
-        logger.info("Request : {}", requestLog);
+        logger.info("Error Request : {}", requestLog);
     }
 
-    @After("log()")
-    public void doAfter() {
-//        logger.info("--------doAfter--------");
-    }
 
-    @AfterReturning(returning = "result",pointcut = "log()")
-    public void doAfterRuturn(Object result) {
-        logger.info("Result : {}", result);
-    }
+//    @After("log()")
+//    public void doAfter(){
+//        logger.info("----------doAfter----------");
+//    }
+
+//    @AfterReturning(returning = "result",pointcut = "log()")
+//    public void doAfterReturn(Object result){
+//        logger.info("result = {}",result);
+//    }
+
 
     private class RequestLog {
         private String url;
@@ -66,5 +69,4 @@ public class LogAspect {
                     '}';
         }
     }
-
 }

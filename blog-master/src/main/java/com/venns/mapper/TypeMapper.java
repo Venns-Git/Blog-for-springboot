@@ -1,21 +1,36 @@
 package com.venns.mapper;
 
-import com.venns.entity.Type;
+import com.venns.po.Type;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+
+
 @Mapper
+@Repository
 public interface TypeMapper {
-    public List<Type> getAllType();
-    public Type getTypeById(@Param("id")Long id);
-    public Type getTypeByName(@Param("name")String name);
-    public void saveType(Type type);
-    public void updateType(Type type);
-    public void deleteType(Long id);
 
+    @Transactional
+    int save(Type type);
 
+    @Transactional
+    Type getType(Long id);
+
+    @Transactional
+    Type getTypeByName(@Param("name") String name);
+
+    @Transactional
+    @Select("select * from t_type")
+    List<Type> listType();
+
+    @Transactional
+    int updateType(Type type);
+
+    @Transactional
+    int deleteType(Long id);
 }

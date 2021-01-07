@@ -1,34 +1,39 @@
 package com.venns.mapper;
 
-import com.venns.entity.Blog;
+import com.venns.po.Blog;
+import com.venns.vo.BlogQuery;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+
 @Mapper
+@Repository
 public interface BlogMapper {
-    public List<Blog> getAllBlog();
-    public void saveBlog(Blog blog);
-    public Blog getBlogById(@Param("id") Long id);
-    public void deleteBlog(Long id);
-    public void updateBlog(Blog blog);
-    public List<Blog> searchBlog(Blog blog);
 
+    Blog getBlogByID(Long id);
 
-    public Integer countBlog();
-    public List<String> findGroupYear();
-    public List<Blog> findByYear(@Param("year")String year);
+    //查出所有博客
+    List<Blog> listBlog(BlogQuery blog);
 
+    //查出所有博客显示在前端页面
+    List<Blog> listBlogOnFront(BlogQuery blog);
 
-    public List<Blog> getBlogByTypeId(@Param("typeId")Long typeId);
-    public List<Blog> getBlogByTagId(@Param("tagId")Long tagId);
+    //热门文章
+    List<Blog> listBlogOnFrontHot(BlogQuery blog);
 
-    public List<Blog> getIndexBlog();
-    public List<Blog> getRecommendBlog();
-    public List<Blog> searchIndexBlog(@Param("query")String query);
-    public Blog getDetailedBlog(@Param("id")Long id);
-    public void updateViews(@Param("id")Long id);
+    //实现博客阅读数的增加
+    int incView(Blog blog);
+
+    //实现博客喜欢数的增加
+    int incLikes(Blog blog);
+
+    int save(Blog blog);
+
+    int updateBlog(Blog blog);
+
+    int deleteBlog(@Param("id") Long id);
+
 }

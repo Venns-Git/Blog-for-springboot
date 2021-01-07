@@ -1,19 +1,28 @@
 package com.venns.mapper;
 
-import com.venns.entity.Tag;
+import com.venns.po.Tag;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+
 @Mapper
+@Repository
 public interface TagMapper {
-    public List<Tag> getAllTag();
-    public Tag getTagById(@Param("id") Long id);
-    public Tag getTagByName(@Param("name") String name);
-    public void saveTag(Tag tag);
-    public void updateTag(Tag tag);
-    public void deleteTag(Long id);
+
+    int save(Tag tag);
+
+    Tag getTag(Long id);
+
+    Tag getTagByName(String name);
+
+    List<Tag> listTag();
+
+    List<Tag> listTag1(@Param("ids") List<Long> ids);
+
+    int updateTag(Tag tag);
+
+    int deleteTag(Long id);
 }

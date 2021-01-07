@@ -19,6 +19,7 @@ public class MarkdownUtils {
 
     /**
      * markdown格式转换成HTML格式
+     *
      * @param markdown
      * @return
      */
@@ -29,12 +30,7 @@ public class MarkdownUtils {
         return renderer.render(document);
     }
 
-    /**
-     * 增加扩展[标题锚点，表格生成]
-     * Markdown转换成HTML
-     * @param markdown
-     * @return
-     */
+
     public static String markdownToHtmlExtensions(String markdown) {
         //h标题生成id
         Set<Extension> headingAnchorExtensions = Collections.singleton(HeadingAnchorExtension.create());
@@ -73,13 +69,4 @@ public class MarkdownUtils {
     }
 
 
-    public static void main(String[] args) {
-        String table = "| hello | hi   | 哈哈哈   |\n" +
-                "| ----- | ---- | ----- |\n" +
-                "| 斯维尔多  | 士大夫  | f啊    |\n" +
-                "| 阿什顿发  | 非固定杆 | 撒阿什顿发 |\n" +
-                "\n";
-        String a = "[imCoding 爱编程](http://www.lirenmi.cn)";
-        System.out.println(markdownToHtmlExtensions(a));
-    }
 }

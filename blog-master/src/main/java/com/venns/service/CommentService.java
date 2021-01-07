@@ -1,10 +1,20 @@
 package com.venns.service;
 
-import com.venns.entity.Comment;
+import com.venns.po.Comment;
 
 import java.util.List;
 
+
 public interface CommentService {
-    public void saveComment(Comment comment);
-    public List<Comment> getCommentByBlogId(Long blogId);
+
+
+    List<Comment> listComments(Long blogId);
+
+    List<Comment> listAllComments();
+
+    List<Comment> listAdminComments();
+
+    int saveComments(Comment comment);
+
+    int deleteComments(Long id);
 }
